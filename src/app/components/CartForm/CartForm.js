@@ -1,39 +1,67 @@
-'use client'
-import { Formik, Field, Form } from 'formik';
+"use client";
+import { Formik, Field, Form } from "formik";
+import axios from 'axios'
 
 const CartForm = () => {
-  return (
-    <div>
-          <Formik
-      initialValues={{
-        firstName: '',
-        lastName: '',
-        email: '',
-      }}
-      onSubmit={async (values) => {
-        await sleep(500);
-        alert(JSON.stringify(values, null, 2));
-      }}
-    >
-      {({ isSubmitting }) => (
-        <Form>
-          <label htmlFor="firstName">First Name</label>
-          <Field name="firstName" placeholder="Jane" />
+  const validateEmail = (value) => {
+    let error;
+    if (!value) {
+      error = 'Requiredo';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+      error = 'Invalido';
+    }
+    return error;
+  };
 
-          <label htmlFor="lastName">Last Name</label>
-          <Field name="lastName" placeholder="Doe" />
+  const firstName = (value) => {
+    let error;
+    if (value === '') {
+      error = 'Requerido';
+    }
+    return error;
+  };
 
-          <label htmlFor="email">Email</label>
-          <Field name="email" placeholder="jane@acme.com" type="email" />
-
-          <button type="submit" disabled={isSubmitting}>
-            Submit
-          </button>
-        </Form>
-      )}
-    </Formik>
-    </div>
-  )
+const addContact = async (values) => {
+//console.log(JSON.stringify(values, 2, null))
+const data = {contactData: values}
+const response = await axios.post('/api/add-contact', data);
+console.log(response.data);
 }
 
-export default CartForm
+  return (
+    <div>
+      <Formik
+        initialValues={{
+          firstName: "",
+          lastName: "",
+          email: "",
+        }}
+        onSubmit={async (values) => {
+      addContact(values)
+        }}
+      >
+        {({ isSubmitting, errors,touched }) => (
+          <Form>
+            <label htmlFor='firstName'>First Name</label>
+            <Field name='firstName' placeholder='Jane' validate={firstName} />
+          {errors.firstName && touched.firstName && <p>Completar</p>}
+
+
+            <label htmlFor='lastName'>Last Name</label>
+            <Field name='lastName' placeholder='Doe' />
+
+            <label htmlFor='email'>Email</label>
+            <Field name='email' placeholder='jane@acme.com' type='email' validate={validateEmail} />
+            {errors.email && touched.email && <p>Completar</p>}
+
+            <button type='submit' disabled={isSubmitting}>
+              Submit
+            </button>
+          </Form>
+        )}
+      </Formik>
+    </div>
+  );
+};
+
+export default CartForm;

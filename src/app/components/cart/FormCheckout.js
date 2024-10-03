@@ -2,7 +2,7 @@ import CartForm from '@/app/components/CartForm/CartForm'
 
 const FormCheckout = () => {
   return (
-    <div><CartForm/></div>
+    <div className='w-2/5'><CartForm/></div>
   )
 }
 
