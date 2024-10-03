@@ -22,10 +22,8 @@ const CartForm = () => {
   };
 
 const addContact = async (values) => {
-//console.log(JSON.stringify(values, 2, null))
 const data = {contactData: values}
 const response = await axios.post('/api/add-contact', data);
-console.log(response.data);
 }
 
   return (
