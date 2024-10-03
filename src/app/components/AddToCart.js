@@ -6,7 +6,7 @@ const AddToCart = ({name, price, id, image}) => {
   return (
     <>
     <button onClick={()=> handleAddToCart(name, price, image, id, 1)} className="text-zinc-50 border-4 bg-pink-500  border-yellow-400 px-4 py-2 mt-6">
-        add to cart
+        Add to cart
     </button>
     </>
   )
