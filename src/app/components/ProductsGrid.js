@@ -1,6 +1,6 @@
 import Inner from '@/app/components/Inner';
 import ProductCard from '@/app/components/ProductCard';
-import { getAllProducts, getAllProductsDB } from '@/app/actions';
+import {getAllProductsDB } from '@/app/actions';
 
 export default async function ProductsGrid() {
   const response = await getAllProductsDB()
