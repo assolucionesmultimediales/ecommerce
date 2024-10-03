@@ -1,8 +1,8 @@
-import React from 'react'
+import CartForm from '@/app/components/CartForm/CartForm'
 
 const FormCheckout = () => {
   return (
-    <div>FormCheckout</div>
+    <div><CartForm/></div>
   )
 }
 

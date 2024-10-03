@@ -8,7 +8,7 @@ export default async function ProductsGrid() {
   return (
     <section>
       <Inner>
-        <h2 className='text-start ml-5 mb-12 mt-8 text-pink-500 text-3xl font-medium'>Nuestra Selección</h2>
+        <h2 className='text-start ml-5 mb-12 mt-8 text-pink-500 text-3xl font-bold'>Nuestra Selección</h2>
         <div className='grid grid-cols-12 gap-1'>
           {response.products && response.products.map((item, index) => (
             <ProductCard key={index} item={item} />

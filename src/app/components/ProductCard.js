@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ProductCard = ({ item }) => {
+const ProductCard = ({ item, key }) => {
   return (
-    <div className='col-span-3 flex justify-center items-center flex-col'>
+    <div key={key} className='col-span-3 flex justify-center items-center flex-col'>
       <Image
       className='border-4 border-yellow-400 '
         src={`/imgs/${item.image}`}
@@ -13,9 +13,9 @@ const ProductCard = ({ item }) => {
         sizes='100vw'
         style={{ width: '85%', height: 'auto' }}
       />
-      <h3 className='text-pink-500 text-lg font-medium mt-5'>{item.name}</h3>
-      <h2 className='text-pink-500 text-l font-medium mt-2'>{item.author}</h2>
-      <Link className='text-yellow-400 font-bold mb-8' href={`/product/${item._id}`}>View More</Link>
+      <h2 className='text-pink-500 text-lg font-inter font-bold mt-4'>{item.name}</h2>
+      <h2 className='text-pink-500 text-l font-medium mt-2 mb-2'>{item.author}</h2>
+      <Link className='text-yellow-400 font-bold mb-12 font-montserrat' href={`/product/${item._id}`}>View More</Link>
     </div>
   );
 };

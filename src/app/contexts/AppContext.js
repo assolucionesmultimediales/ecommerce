@@ -8,28 +8,32 @@ const AppContext = createContext(undefined);
 export const AppContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-const cartLength = cart.length
+  const cartLength = cart.reduce((acc, item) => acc + item.quantity, 0);
 
-const handleAddToCart =(name, price, image, id, quantity) => {
-const product = {
-  name,
-  price,
-  image,
-  id,
-  quantity
-}
-/*const existingProduct = cart.find((item) => item.id === id);
-if(existingProduct){
-  existingProduct.quantity += 1;
-  return setCart([...cart]);
-} else {*/
-  setCart([...cart, product])
-}
-  ;
+  const handleAddToCart = (name, price, image, id, quantity) => {
+    const product = {
+      name,
+      price,
+      image,
+      id,
+      quantity,
+    };
+  
 
-const handleRemoveProduct = () =>{
-// to do, agregar id 
-}
+    const existingProduct = cart.find(item => item.id === id);
+    
+    if(existingProduct){
+      existingProduct.quantity += quantity
+      return setCart([...cart])
+    }
+    setCart ([...cart,product])
+
+  };
+
+  const handleRemoveProduct = (id) => {
+    const restProducts = cart.filter(product => product.id !== id);
+    setCart(restProducts);
+  };
 
 const cartTotal = () => cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -40,6 +44,7 @@ const cartTotal = () => cart.reduce((acc, item) => acc + item.price * item.quant
         setCart,
         cartLength,
         handleAddToCart,
+        handleRemoveProduct,
         cartTotal
       }}
     >

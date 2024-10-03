@@ -3,7 +3,7 @@ import Image from 'next/image';
 function Footer() {
   return (
     <div className="flex justify-between items-center h-10 px-12 py-10 bg-pink-500 border-t-4 border-yellow-400 text-white">
-    <div>KIRA´S MANGA STORE</div>
+    <h3>KIRA´S MANGA STORE</h3>
     <div className="flex justify-center items-center gap-3">
       <div>
       <Image

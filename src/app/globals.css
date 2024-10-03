@@ -7,3 +7,27 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
+
+body{
+  font-family: var(--font-inter);
+  font-weight: lighter;
+}
+
+nav{
+  font-family: var(--font-montserrat);
+  font-weight: bold;
+}
+
+h1, h2{
+  font-family: var(--font-montserrat);
+}
+
+h3{
+  font-family: var(--font-montserrat);
+  font-weight: bold;
+}
+
+button{
+  font-family: var(--font-inter);
+  font-weight:400;
+}
