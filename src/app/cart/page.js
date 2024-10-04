@@ -5,7 +5,7 @@ import FormCheckout from "@/app/components/cart/FormCheckout";
 const Cart = () => {
   return (
     <section className='h-screen mt-32'>
-      <h1 className='text-pink-500 text-2xl font-medium mt-5'>Cart</h1>
+      <h1 className='text-pink-500 text-2xl font-medium mt-5 mb-6 text-center'>Completa tu compra</h1>
       <Inner>
         <div className='grid grid-cols-12'>
           <div className='col-span-12 lg:col-span-6 text-pink-500 text-lg font-medium mt-5'>

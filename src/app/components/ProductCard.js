@@ -15,7 +15,7 @@ const ProductCard = ({ item, key }) => {
       />
       <h2 className='text-pink-500 text-lg font-inter font-bold mt-4'>{item.name}</h2>
       <h2 className='text-pink-500 text-l font-medium mt-2 mb-2'>{item.author}</h2>
-      <Link className='text-yellow-400 font-bold mb-12 font-montserrat' href={`/product/${item._id}`}>View More</Link>
+      <Link className='text-yellow-400 font-bold mb-12 font-montserrat' href={`/product/${item._id}`}>Ver más</Link>
     </div>
   );
 };

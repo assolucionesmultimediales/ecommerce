@@ -27,11 +27,13 @@ const response = await axios.post('/api/add-contact', data);
 }
 
   return (
-    <div>
-    <Formik
+    <div className="mt-3">
+      <h1 className="mb-4 text-lg">Dejanos tus datos</h1>
+<Formik
   initialValues={{
     firstName: "",
     lastName: "",
+    direccion: "",
     email: "",
   }}
   onSubmit={async (values) => {
@@ -40,37 +42,57 @@ const response = await axios.post('/api/add-contact', data);
 >
   {({ isSubmitting, errors, touched }) => (
     <Form className="flex flex-col space-y-4">
-      <label htmlFor="firstName" className="text-pink-500 text-sm font-semibold">
-        First Name
+      <label
+        htmlFor="firstName"
+        className="text-pink-500 text-base font-semibold font-montserrat"
+      >
+        Nombre
       </label>
       <Field
         name="firstName"
-        placeholder="Jane"
+        placeholder=""
         validate={firstName}
-        className="border-2 border-pink-500 bg-pink-200 text-white p-2 rounded-md placeholder-white font-inter font-medium "
+        className="border-2 border-pink-500 bg-pink-200 text-white p-2 rounded-md placeholder-white font-inter text-base"
       />
       {errors.firstName && touched.firstName && (
         <p className="text-yellow-400 text-sm">Completar</p>
       )}
 
-      <label htmlFor="lastName" className="text-pink-500 text-sm font-semibold">
-        Last Name
+      <label
+        htmlFor="lastName"
+        className="text-pink-500 text-base font-semibold font-montserrat"
+      >
+        Apellido
       </label>
       <Field
         name="lastName"
-        placeholder="Doe"
-        className="border-2 border-pink-500 bg-pink-200 text-white p-2 rounded-md placeholder-white"
+        placeholder=""
+        className="border-2 border-pink-500 bg-pink-200 text-white p-2 rounded-md placeholder-white font-inter text-base"
+      />
+      <label
+        htmlFor="direccion"
+        className="text-pink-500 text-base font-semibold font-montserrat"
+      >
+        Dirección 
+      </label>
+      <Field
+        name="direccion"
+        placeholder=""
+        className="border-2 border-pink-500 bg-pink-200 text-white p-2 rounded-md placeholder-white font-inter text-base"
       />
 
-      <label htmlFor="email" className="text-pink-500 text-sm font-semibold">
+      <label
+        htmlFor="email"
+        className="text-pink-500 text-base font-semibold font-montserrat"
+      >
         Email
       </label>
       <Field
         name="email"
-        placeholder="jane@acme.com"
+        placeholder=""
         type="email"
         validate={validateEmail}
-        className="border-2 border-pink-500 bg-pink-200 text-white p-2 rounded-md placeholder-white"
+        className="border-2 border-pink-500 bg-pink-200 text-white p-2 rounded-md placeholder-white font-inter text-base"
       />
       {errors.email && touched.email && (
         <p className="text-yellow-400 text-sm">Completar</p>
@@ -79,13 +101,14 @@ const response = await axios.post('/api/add-contact', data);
       <button
         type="submit"
         disabled={isSubmitting}
-        className="border-4 border-yellow-400 bg-pink-500 text-white p-2 rounded-md hover:bg-pink-600 disabled:bg-gray-400"
+        className="border-4 border-yellow-400 bg-pink-500 text-white p-2 rounded-md hover:bg-pink-200 hover:border-4 hover:border-pink-500 hover:text-pink-500 hover:font-bold"
       >
-        Submit
+        Enviar
       </button>
     </Form>
   )}
 </Formik>
+
 
     </div>
   );

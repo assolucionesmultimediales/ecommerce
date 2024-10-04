@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaCartShopping } from 'react-icons/fa6';
 
+
 export default function Navbar() {
   const { cartLength } = useAppContext();
   return (
@@ -14,7 +15,7 @@ export default function Navbar() {
       <nav>
         <ul className='flex justify-center items-center gap-5'>
           <li>
-            <Link href={`/`}>Home</Link>
+            <Link href={`/specialProducts`}>Seleccion especial</Link>
           </li>
           <li>
             <Link href={`/cart`}>Cart</Link>

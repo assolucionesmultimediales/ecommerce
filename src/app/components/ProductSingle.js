@@ -21,7 +21,6 @@ const ProductSingle = ({product}) => {
                     <h2 className="text-pink-500 text-lg font-semibold mb-3">Editorial: <span className="text-pink-500 font-normal">{editorial}</span></h2>
                     <h2 className="text-pink-500 text-lg font-semibold mb-3">Descripción: <span className="text-pink-500 font-normal">{description}</span></h2>
                     <h2 className="text-pink-500 text-lg font-semibold mb-3">Precio: <span className="font-normal">$ {price}</span></h2>
-                    
                     <AddToCart  name={name} image={image} price={price} id={id}/>
                     
                 </div>
