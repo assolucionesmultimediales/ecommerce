@@ -4,11 +4,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaCartShopping } from 'react-icons/fa6';
 
-
 export default function Navbar() {
   const { cartLength } = useAppContext();
+  
   return (
-    <div className='flex justify-between items-center h-24 bg-pink-500 border-b-4 border-yellow-400  text-white px-10 fixed top-0 w-full'>
+    <div className='flex justify-between items-center h-24 bg-pink-500 border-b-4 border-yellow-400 text-white px-10 fixed top-0 w-full'>
       <Link href={`/`}>
         <Image src={`/imgs/logo.png`} width={50} height={50} alt='Logo' />
       </Link>
@@ -17,7 +17,8 @@ export default function Navbar() {
           <li>
             <Link href={`/specialProducts`}>Seleccion especial</Link>
           </li>
-          <li>
+          {/* Enlace "Cart" oculto en pantallas pequeñas */}
+          <li className='hidden md:block'>
             <Link href={`/cart`}>Cart</Link>
           </li>
         </ul>
@@ -27,8 +28,7 @@ export default function Navbar() {
         <div className='relative'>
           <FaCartShopping size={30} />
           {cartLength > 0 && (
-            <span className=' absolute top-5 left-5 flex items-center justify-center bg-yellow-400 text-pink-500 rounded-full w-2 h-4 p-4 text-sm font-bold'>
-              {' '}
+            <span className='absolute top-5 left-5 flex items-center justify-center bg-yellow-400 text-pink-500 rounded-full w-2 h-4 p-4 text-sm font-bold'>
               {cartLength}
             </span>
           )}
