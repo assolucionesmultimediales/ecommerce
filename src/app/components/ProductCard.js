@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import AddToCart from '@/app/components/AddToCart';
 
-
-const ProductCard = ({ item, key }) => {
+const ProductCard = ({ item }) => {
   return (
-    <div key={key} className='col-span-3 flex justify-center items-center flex-col'>
+    <div className='col-span-3 flex justify-center items-start flex-col'>
       <Link href={`/product/${item._id}`}>
         <Image
           className='border-4 border-yellow-400'
@@ -18,9 +18,11 @@ const ProductCard = ({ item, key }) => {
       </Link>
       <h2 className='text-pink-500 text-lg font-inter font-bold mt-4'>{item.name}</h2>
       <h2 className='text-pink-500 text-l font-medium mt-2 mb-2'>{item.author}</h2>
-      <Link className='text-yellow-400 font-bold mb-12 font-montserrat' href={`/product/${item._id}`}>Ver más</Link>
+      <Link className='text-yellow-400 font-bold mb-4 font-montserrat' href={`/product/${item._id}`}>Ver más</Link>
+      <AddToCart name={item.name} image={item.image} price={item.price} id={item._id} />
     </div>
   );
 };
 
 export default ProductCard;
+

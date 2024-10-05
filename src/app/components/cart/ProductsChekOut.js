@@ -25,7 +25,7 @@ const ProductsChekOut = () => {
           </div>
         ))}
       </div>
-      <p className="text-lg font-bold mb-20">Total: $ {cartTotal()}</p>
+      <p className="text-lg font-bold mb-24">Total: $ {cartTotal()}</p>
     </div>
   );
 };

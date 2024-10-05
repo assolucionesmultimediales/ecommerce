@@ -14,7 +14,7 @@ const specialProducts = async () => {
   return (
     <section>
       <Inner>
-        <h2 className="text-start ml-5 mb-14 mt-40 text-pink-500 text-3xl font-bold">
+        <h2 className="text-start mb-14 mt-40 text-pink-500 text-3xl font-bold">
           Selección Especial
         </h2>
         <div className="grid grid-cols-12 gap-1 mb-8 mt-20">

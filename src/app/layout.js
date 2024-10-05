@@ -5,7 +5,7 @@ import { AppContextProvider } from '@/app/contexts/AppContext';
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 
-const inter = Inter({ subsets: ['latin'], variable:'--font-inter' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' });
 
 export const metadata = {
@@ -16,11 +16,19 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
-      <body className={`${inter.variable} ${montserrat.variable}`}>
+      {/* min-h-screen y flex para asegurar que el footer quede abajo */}
+      <body className={`${inter.variable} ${montserrat.variable} min-h-screen flex flex-col`}>
         <AppContextProvider>
+          {/* Navbar se coloca arriba */}
           <Navbar />
-          {children}
-          <Footer/>
+          
+          {/* flex-grow en el main para expandir el contenido y empujar el footer */}
+          <main className="flex-grow">
+            {children}
+          </main>
+          
+          {/* Footer siempre estará al final */}
+          <Footer />
         </AppContextProvider>
       </body>
     </html>
