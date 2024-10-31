@@ -19,7 +19,7 @@ export default function Navbar() {
           </li>
           {/* Enlace "Cart" oculto en pantallas pequeñas */}
           <li className='hidden md:block'>
-            <Link href={`/cart`}>Cart</Link>
+            <Link href={`/trivia`}>Trivia</Link>
           </li>
         </ul>
       </nav>

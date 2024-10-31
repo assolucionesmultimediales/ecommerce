@@ -2,6 +2,7 @@ import { Inter, Montserrat } from 'next/font/google';
 import './globals.css';
 
 import { AppContextProvider } from '@/app/contexts/AppContext';
+import { TriviaContextProvider } from '@/app/contexts/TriviaContext'; // Importa el TriviaContextProvider
 import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 
@@ -18,18 +19,18 @@ export default function RootLayout({ children }) {
     <html lang='en'>
       {/* min-h-screen y flex para asegurar que el footer quede abajo */}
       <body className={`${inter.variable} ${montserrat.variable} min-h-screen flex flex-col`}>
-        <AppContextProvider>
-          {/* Navbar se coloca arriba */}
-          <Navbar />
-          
-          {/* flex-grow en el main para expandir el contenido y empujar el footer */}
-          <main className="flex-grow">
-            {children}
-          </main>
-          
-          {/* Footer siempre estará al final */}
-          <Footer />
-        </AppContextProvider>
+     
+          <TriviaContextProvider>
+          <AppContextProvider>
+            <Navbar />     
+            {/* flex-grow en el main para expandir el contenido y empujar el footer */}
+            <main className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+            </AppContextProvider>
+          </TriviaContextProvider>
+        
       </body>
     </html>
   );
