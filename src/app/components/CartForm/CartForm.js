@@ -27,8 +27,8 @@ const CartForm = () => {
   };
 
   return (
-    <div className='mt-3'>
-      <h1 className='mb-4 text-lg'>Dejanos tus datos</h1>
+    <div className='mt-3 mr-44'>
+      <h1 className='mb-4 w-64 text-lg'>Dejanos tus datos</h1>
       <Formik
         initialValues={{
           firstName: "",
@@ -41,7 +41,7 @@ const CartForm = () => {
         }}
       >
         {({ isSubmitting, errors, touched }) => (
-          <Form className='flex flex-col space-y-4'>
+          <Form className='flex flex-col space-y-4 w-96'>
             <label
               htmlFor='firstName'
               className='text-pink-500 text-base font-semibold font-montserrat'
@@ -96,7 +96,7 @@ const CartForm = () => {
               placeholder=''
               type='email'
               validate={validateEmail}
-              className='border-2 border-pink-500 bg-pink-200 text-white p-2 rounded-md placeholder-white font-inter text-base'
+              className='border-2 border-pink-500 bg-pink-200 text-white rounded-md placeholder-white font-inter text-base p-2'
             />
             {errors.email && touched.email && (
               <p className='text-yellow-400 text-sm'>Completar</p>

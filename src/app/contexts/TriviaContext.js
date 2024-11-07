@@ -1,78 +1,59 @@
-'use client'; // Indica que este componente se ejecuta del lado del cliente
+'use client'; // Asegúrate de marcar que esto se ejecuta del lado del cliente
 
 import { createContext, useState, useContext } from 'react'; // Importa funciones para crear contexto y manejar el estado
 
-// Crea un contexto de React llamado TriviaContext
 const TriviaContext = createContext(undefined);
 
-// El proveedor del contexto, que envolverá a los componentes hijos de trivia
 export const TriviaContextProvider = ({ children }) => {
-  // Estado que almacena las respuestas del usuario para la trivia
-  
-  const [triviaResponses, setTriviaResponses] = useState([]);
+  const [triviaScore, setTriviaScore] = useState(0); // Puntaje acumulado
+  const [triviaResponses, setTriviaResponses] = useState([]); // Respuestas seleccionadas
 
-  // Función para manejar el establecimiento de respuestas del usuario en trivia
-  const handleSetTriviaResponses = (question, answer) => {
-    // Verifica si la pregunta ya tiene una respuesta registrada
-    const questionExists = triviaResponses.find(
+  // Función para manejar las respuestas seleccionadas
+  const handleSetTriviaResponses = (question, selectedAnswerText) => {
+    // Verificar si la respuesta ya fue seleccionada para esta pregunta
+    const alreadyAnswered = triviaResponses.find(
       (response) => response.question.title === question.title
     );
 
-    if (questionExists) {
-      // Si la pregunta existe, actualiza la respuesta
-      setTriviaResponses((prevResponses) =>
-        prevResponses.map((response) =>
-          response.question.title === question.title
-            ? { ...response, answer } // Reemplaza la respuesta
-            : response // Mantiene la respuesta anterior
-        )
-      );
-    } else {
-      // Si la pregunta no existe, agrega una nueva respuesta
-      setTriviaResponses((prevResponses) => [
-        ...prevResponses,
-        { question, answer }, // Crea un nuevo objeto con la pregunta y respuesta
-      ]);
-    }
-  };
+    // Si ya respondió, no hacer nada
+    if (alreadyAnswered) return;
 
-  // Función para verificar si una respuesta específica fue seleccionada para una pregunta
-  const selectedTriviaAnswer = (question, answer) => {
-    return triviaResponses.some(
-      (response) =>
-      response.question.title === question.title && // Verifica que la pregunta coincida
-      response.answer === answer // Y que la respuesta coincida
+    // Encuentra la respuesta seleccionada
+    const selectedAnswer = question.answers.find(
+      (answer) => answer.text === selectedAnswerText
     );
-  };
- 
-  // Obtiene el total de respuestas registradas en trivia
-  const totalTriviaResponses = triviaResponses.length;
 
-  // Devuelve el contexto con las propiedades y funciones necesarias
+    // Si la respuesta es correcta, sumamos el puntaje de la pregunta
+    if (selectedAnswer && selectedAnswer.isCorrect) {
+      setTriviaScore((prevScore) => prevScore + question.score);
+    }
+
+    // Almacenar la respuesta en el estado
+    setTriviaResponses((prevResponses) => [
+      ...prevResponses,
+      { question, selectedAnswer },
+    ]);
+  };
+
   return (
     <TriviaContext.Provider
       value={{
-        triviaResponses, // Respuestas del usuario para la trivia
-        totalTriviaResponses, // Total de respuestas registradas en trivia
-        handleSetTriviaResponses, // Función para actualizar las respuestas en trivia
-        selectedTriviaAnswer // Función para verificar si una respuesta fue seleccionada
+        triviaScore, // Puntaje acumulado
+        triviaResponses, // Respuestas seleccionadas
+        handleSetTriviaResponses, // Función para manejar respuestas
       }}
     >
-      {children} {/* Renderiza los componentes hijos específicos de trivia */}
+      {children} {/* Renderiza los componentes hijos */}
     </TriviaContext.Provider>
   );
 };
 
-// Hook personalizado para usar el contexto de trivia de manera más sencilla
 export const useTriviaContext = () => {
-  const context = useContext(TriviaContext); // Obtiene el contexto
-
-  // Lanza un error si el hook se usa fuera del proveedor
+  const context = useContext(TriviaContext);
   if (!context) {
-    throw new Error(`useTriviaContext tiene que ser usado dentro del provider`);
+    throw new Error('useTriviaContext debe ser usado dentro del provider');
   }
-  return context; // Retorna el contexto
+  return context;
 };
 
-// Exporta el contexto para ser usado en otros componentes
 export default TriviaContext;

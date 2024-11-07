@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getAllQuestionsDB, getOneQuestionDB } from '@/app/actions';
+import { getAllQuestionsDB} from '@/app/actions';
 
 export async function GET() {
   try {
