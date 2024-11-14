@@ -9,7 +9,7 @@ const ProductsCheckOut = () => {
   const { cart, cartTotal, handleRemoveProduct } = useAppContext(); // Extrae funciones y datos del contexto del carrito
   const { triviaScore } = useTriviaContext(); // Extrae el puntaje de trivia del contexto de trivia
 
-  // Calcula el porcentaje de descuento basado en el puntaje de trivia
+  // calculo el porcentaje de descuento basado en el puntaje de trivia
   const getDiscountPercentage = () => {
     if (triviaScore >= 100) return 30;
     if (triviaScore > 80) return 25;
@@ -17,7 +17,7 @@ const ProductsCheckOut = () => {
     return 0;
   };
 
-  // Calcula el total con el descuento aplicado
+  // calculo el total con el descuento aplicado
   const totalWithDiscount = () => {
     const discountPercentage = getDiscountPercentage();
     return cartTotal() * (1 - discountPercentage / 100);
@@ -27,7 +27,7 @@ const ProductsCheckOut = () => {
     <div className="mb-28">
       <h1 className="text-lg font-medium mb-14">Productos seleccionados</h1>
 
-      {/* Mapea cada producto en el carrito */}
+      {/* Mapeo cada producto en el carrito */}
       <div className="mb-20">
         {cart.map((product) => (
           <div key={product.id} className="flex flex-col items-start mb-8">
@@ -65,7 +65,7 @@ const ProductsCheckOut = () => {
         Hace la trivia para obtener descuentos
       </Link>
 
-      {/* Muestra el puntaje de trivia, descuento y total con descuento */}
+      {/* Muestro el puntaje de trivia, descuento y total con descuento */}
       <p className="font-bold mt-6 mb-2">Puntaje: {triviaScore}</p>
       <p className="font-bold mb-2">Descuento: {getDiscountPercentage()}%</p>
       
