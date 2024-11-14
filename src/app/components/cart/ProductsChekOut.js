@@ -9,6 +9,20 @@ const ProductsCheckOut = () => {
   const { cart, cartTotal, handleRemoveProduct } = useAppContext(); // Extrae funciones y datos del contexto del carrito
   const { triviaScore } = useTriviaContext(); // Extrae el puntaje de trivia del contexto de trivia
 
+  // Calcula el porcentaje de descuento basado en el puntaje de trivia
+  const getDiscountPercentage = () => {
+    if (triviaScore >= 100) return 30;
+    if (triviaScore > 80) return 25;
+    if (triviaScore > 40) return 20;
+    return 0;
+  };
+
+  // Calcula el total con el descuento aplicado
+  const totalWithDiscount = () => {
+    const discountPercentage = getDiscountPercentage();
+    return cartTotal() * (1 - discountPercentage / 100);
+  };
+
   return (
     <div className="mb-28">
       <h1 className="text-lg font-medium mb-14">Productos seleccionados</h1>
@@ -32,11 +46,11 @@ const ProductsCheckOut = () => {
                 <h2 className="mb-2">{`${product.name}  X  ${product.quantity}`}</h2> {/* Nombre y cantidad del producto */}
                 <p className="mb-2 text-lg font-bold">$ {product.price * product.quantity}</p> {/* Precio total del producto */}
                 <button
-              className="text-zinc-50 border-4 bg-pink-500 border-yellow-400 px-4 py-2 "
-              onClick={() => handleRemoveProduct(product.id)}
-            >
-              Remove
-            </button>
+                  className="text-zinc-50 border-4 bg-pink-500 border-yellow-400 px-4 py-2"
+                  onClick={() => handleRemoveProduct(product.id)}
+                >
+                  Remove
+                </button>
               </div>
             </div>
           </div>
@@ -51,10 +65,12 @@ const ProductsCheckOut = () => {
         Hace la trivia para obtener descuentos
       </Link>
 
-      {/* Muestra el puntaje de trivia y el total del carrito */}
+      {/* Muestra el puntaje de trivia, descuento y total con descuento */}
       <p className="font-bold mt-6 mb-2">Puntaje: {triviaScore}</p>
-      <p className="font-bold mb-2">Descuento: %</p>
-      <p className="text-lg font-bold mb-4">Total: $ {cartTotal()}</p>
+      <p className="font-bold mb-2">Descuento: {getDiscountPercentage()}%</p>
+      
+      {/*eltoFixed es para que me ponga solo dos decimales*/}
+      <p className="text-lg font-bold mb-4">Total con descuento: $ {totalWithDiscount().toFixed(2)}</p>
     </div>
   );
 };
