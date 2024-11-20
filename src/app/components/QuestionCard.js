@@ -16,14 +16,14 @@ const QuestionCard = ({ question }) => {
   };
 
   return (
-    <div className="border-4 border-yellow-400 p-10 mb-10">
+    <div className="border-4 border-yellow-400 p-10 mb-10 bg-gradient-to-t from-pink-700 via-black to-black">
       {/* Mostrar el título */}
       <h2 className="text-pink-500 font-inter font-semibold text-lg text-center">
         {question.title}
       </h2>
 
       {/* Mapear las respuestas en columna */}
-      <div className="mt-12 flex flex-col gap-2">
+      <div className="mt-12 flex flex-col gap-2 ">
         {question.answers.map((answer, index) => (
           <AnswerCard
             key={index}
@@ -36,7 +36,7 @@ const QuestionCard = ({ question }) => {
       </div>
 
       {/* Mensaje de respuesta no respondida o respondida */}
-      <div className="mt-10">
+      <div className="mt-10 ">
         {answered ? (
           <p className="text-pink-500 font-semibold">Respondio</p>
         ) : (

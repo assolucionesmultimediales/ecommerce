@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { Formik, Field, Form } from "formik";
 import axios from "axios";
 
@@ -102,13 +103,15 @@ const CartForm = () => {
               <p className='text-yellow-400 text-sm'>Completar</p>
             )}
 
+<Link   className="border-4 border-yellow-400 bg-pink-500 text-white text-center p-2 rounded-md hover:bg-pink-200 hover:border-4 hover:border-pink-500 hover:text-pink-500 hover:font-bold"
+             href={`/graciasPorComprar`}>
             <button
-              type='submit'
+              type="submit"
               disabled={isSubmitting}
-              className='border-4 border-yellow-400 bg-pink-500 text-white p-2 rounded-md hover:bg-pink-200 hover:border-4 hover:border-pink-500 hover:text-pink-500 hover:font-bold'
             >
               Enviar
             </button>
+          </Link>
           </Form>
         )}
       </Formik>

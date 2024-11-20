@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'https://themes.skeleton.dev/create.css';
+
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -10,6 +12,7 @@
 
 body{
   font-family: var(--font-inter);
+  background-color: black;
   font-weight: lighter;
 }
 
@@ -30,4 +33,25 @@ h3{
 button{
   font-family: var(--font-inter);
   font-weight:400;
+}
+
+/* Efecto de ruido en fondo */
+.bg-noise {
+  background: rgb(0, 0, 0);
+  background-image: linear-gradient(45deg, rgba(244, 0, 155, 0.722) 35%, transparent 35%, transparent 50%, rgb(255, 113, 191) 50%, rgba(136, 2, 58, 0.965) 75%, transparent 75%, transparent);
+  background-size: 10px 10px;
+  background-position: 0 0;
+  animation: noise 1s infinite linear;
+}
+
+@keyframes noise {
+  0% {
+    background-position: 5 10;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+.text-glow {
+  text-shadow: 0 0 10px rgba(216, 76, 150, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
 }

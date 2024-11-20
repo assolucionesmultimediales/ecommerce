@@ -5,12 +5,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaCartShopping } from 'react-icons/fa6';
 
+
 export default function Navbar() {
   const { cartLength } = useAppContext(); // Accedemos al contexto del carrito
   const { triviaScore } = useTriviaContext(); // Accedemos al puntaje de trivia desde el contexto
 
   return (
-    <div className='flex justify-between items-center h-24 bg-pink-500 border-b-4 border-yellow-400 text-white px-10 fixed top-0 w-full'>
+    <div className='flex justify-between items-center h-24 bg-pink-700 border-b-4 border-yellow-400 text-white px-10 fixed top-0 w-full'>
       <Link href={`/`}>
         <Image src={`/imgs/logo.png`} width={50} height={50} alt='Logo' />
       </Link>

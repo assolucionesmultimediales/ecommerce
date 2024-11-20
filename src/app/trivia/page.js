@@ -6,7 +6,7 @@ const Trivia = async () => {
   const response = await getAllQuestionsDB();
 
   return (
-    <section className='min-h-screen'> {/* Contenedor principal */}
+    <section className='min-h-screen '> {/* Contenedor principal */}
 
       {/* Contenido */}
       <h1 className='text-3xl font-roboto font-semibold text-pink-600 mt-32 pb-10 text-center'>
