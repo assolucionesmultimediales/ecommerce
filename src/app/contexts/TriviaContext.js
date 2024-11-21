@@ -1,4 +1,4 @@
-'use client'; // Asegúrate de marcar que esto se ejecuta del lado del cliente
+'use client'; 
 
 import { createContext, useState, useContext } from 'react'; // Importa funciones para crear contexto y manejar el estado
 

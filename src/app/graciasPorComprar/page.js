@@ -5,6 +5,7 @@ const Page = () => {
     <div className="mt-20 relative w-full h-screen">
       {/* Imagen de fondo */}
       <Image
+        unoptimized // debo agregar esto porque es una imagen animada, me lo dijo la consola jiji
         className="border-4 border-yellow-400"
         src={`/imgs/fondogif.gif`}
         alt="Fondo animado"
